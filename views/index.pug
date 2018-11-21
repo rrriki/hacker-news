@@ -1,0 +1,30 @@
+extends layout
+block header
+  div#header.jumbotron.jumbotron-fluid.bg-dark.text-white
+    h1.display-4 HN Feed
+    p.lead We <3 hacker news!
+
+block content
+
+  div.container-fluid
+    if posts && posts.length > 0
+      table#list
+        each post in posts
+          // If story_title is null, use title. If both are null, discard
+          - var title = post.story_title || post.title
+          if title 
+            // Only add click if URL exist
+            - var url = post.story_url || post.url
+            tr(id= post.objectID onclick= url ? "window.open('" + url + "', '_blank');" : false, class= url ? "cursor" : false)
+              td
+                span
+                  strong #{title} 
+                span#author - #{post.author} -
+              td
+                - var date = moment(post.created_at).calendar(null, formats)
+                span #{date}
+              td
+                span#delete(onclick="deletePost(event, " +  post.objectID +')')
+                  i.fas.fa-trash-alt   
+    else 
+      h6 Sorry, no posts to show.

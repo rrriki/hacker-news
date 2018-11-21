@@ -1,0 +1,48 @@
+#header {
+  padding: 16px;
+  margin: 0px;
+  margin-bottom: 16px;
+}
+
+table{
+  width: 100%;
+}
+tr {
+  background-color: #ffffff;
+  font-size: 13pt;
+}
+
+tr:hover {
+  background-color: #fafafa;
+  }
+
+td{
+  padding: 16px;
+  border-bottom: 1px solid #ccc ;
+}
+
+#author{
+  color: #999999
+}
+
+#delete i{
+  visibility: hidden;
+}
+
+tr:hover #delete i{
+ visibility: visible;
+ animation: increase 0.5s forwards;
+}
+
+@keyframes increase{
+  from{
+    transform:scale(.5,.5)
+  }
+  to{
+    transform:scale(1.5,1.5)
+  }
+}
+
+.cursor td{
+  cursor: pointer
+}
